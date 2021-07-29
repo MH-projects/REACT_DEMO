@@ -7,7 +7,7 @@
  * @flow
  */
 import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet, Image, Button, TouchableOpacity, ToastAndroid, Alert } from 'react-native';
 import image from './assets/free.png'
 
 const App = () => {
@@ -17,9 +17,19 @@ const App = () => {
       <Image
         style={styles.images_radius}
         source={{ uri: 'https://picsum.photos/200/200' }} />
-      <Image
+      {/*<Image
         style={styles.images}
-        source={image} />
+        source={image} />*/}
+      <Button
+        color='#123456'
+        title='Enter'
+        onPress={() => showAlert()}
+      />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => showAlert()}>
+        <Text style={styles.buttonText}>Press Me</Text>
+      </TouchableOpacity>
     </View >
   );
 };
@@ -43,8 +53,23 @@ const styles = StyleSheet.create({
     height: 200,
     width: 200,
     borderRadius: 100
+  },
+  button: {
+    backgroundColor: 'blue',
+    padding: 7,
+    marginTop: 10
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 20
   }
 })
+
+function showAlert() {
+  console.log('Button Click')
+  ToastAndroid.show("Button Click!", ToastAndroid.SHORT)
+  Alert.alert('Button Click')
+}
 
 export default App;
 
