@@ -6,74 +6,8 @@
  * @format
  * @flow
  */
-import React from 'react';
-import { Text, View, StyleSheet, Image, Button, TouchableOpacity, ToastAndroid, Alert } from 'react-native';
-import image from './assets/free.png'
 
-const App = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Hello World!</Text>
-      <Image
-        style={styles.images_radius}
-        source={{ uri: 'https://picsum.photos/200/200' }} />
-      {/*<Image
-        style={styles.images}
-        source={image} />*/}
-      <Button
-        color='#123456'
-        title='Enter'
-        onPress={() => showAlert()}
-      />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => showAlert()}>
-        <Text style={styles.buttonText}>Press Me</Text>
-      </TouchableOpacity>
-    </View >
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#292929'
-  },
-  title: {
-    color: '#fff',
-    fontSize: 30
-  },
-  images: {
-    height: 200,
-    width: 200
-  },
-  images_radius: {
-    height: 200,
-    width: 200,
-    borderRadius: 100
-  },
-  button: {
-    backgroundColor: 'blue',
-    padding: 7,
-    marginTop: 10
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 20
-  }
-})
-
-function showAlert() {
-  console.log('Button Click')
-  ToastAndroid.show("Button Click!", ToastAndroid.SHORT)
-  Alert.alert('Button Click')
-}
-
-export default App;
-
-/*import React, {Component} from 'react';
+import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, Button, View, Alert, TextInput} from 'react-native';
 
 const instructions = Platform.select({
@@ -202,15 +136,10 @@ function startFad(ticket = "prueba", endpoint = "https://uat.firmaautografa.com"
   });
 }
 
-*//*var ticket = ""
+var ticket = ""
 var user = "avillanueva@na-at.com.mx"
 var password = "c775e7b757ede630cd0aa1113bd102661ab38829ca52a6422ab782862f268646"
-var endpoint = "https://uat.firmaautografa.com"*//*
-var ticket = ""
-var user = ""
-var password = ""
-var endpoint = ""
-
+var endpoint = "https://uat.firmaautografa.com"
 
 function startFadBIO(user = "avillanueva@na-at.com.mx", password = "c775e7b757ede630cd0aa1113bd102661ab38829ca52a6422ab782862f268646", endpoint = "https://uat.firmaautografa.com"){
   console.log(endpoint);
@@ -340,4 +269,106 @@ function showAlert(msg){
     ],
     {cancelable: false},
   );
-}*/
+}
+
+// ----------------------------------------------------------------------
+
+/*import React, { useState } from 'react';
+import { Text, View, StyleSheet, Image, Button, TouchableOpacity, ToastAndroid, Alert } from 'react-native';
+import image from './assets/free.png'
+*/
+/**
+ * Para utilizar un gestor de imagenes podemos instalar uno de expo:
+ * https://docs.expo.dev/versions/latest/sdk/imagepicker/
+ * > expo install expo-image-picker
+ */
+/*import * as ImagePicker from 'expo-image-picker'
+
+const App = () => {
+
+  const [selectedImage, setSelectedImage] = useState(null)
+
+  let openImagePickerAsync = async () => {
+    let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync()
+
+    if (permissionResult.granted === false) {
+      alert('Permission to access camera is required')
+      return
+    }
+
+    const pickerResult = await ImagePicker.launchImageLibraryAsync()
+    console.log(pickerResult)
+
+    if (pickerResult.cancelled === true) {
+      return
+    }
+
+    setSelectedImage({ localUri: pickerResult.uri })
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Hello World!</Text>
+      <Image
+        style={styles.images_radius}
+        source={{
+          uri: selectedImage !== null
+            ? selectedImage.localUri
+            : 'https://picsum.photos/200/200'
+        }} />
+      <Image
+        style={styles.images}
+        source={image} />
+      <Button
+        color='#123456'
+        title='Enter'
+        onPress={() => showAlert()}
+      />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={openImagePickerAsync}>
+        <Text style={styles.buttonText}>Press Me</Text>
+      </TouchableOpacity>
+    </View >
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#292929'
+  },
+  title: {
+    color: '#fff',
+    fontSize: 30
+  },
+  images: {
+    height: 200,
+    width: 200
+  },
+  images_radius: {
+    height: 200,
+    width: 200,
+    borderRadius: 10,
+    resizeMode: 'contain'
+  },
+  button: {
+    backgroundColor: 'blue',
+    padding: 7,
+    marginTop: 10
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 20
+  }
+})
+
+function showAlert() {
+  console.log('Button Click')
+  ToastAndroid.show("Button Click!", ToastAndroid.SHORT)
+  Alert.alert('Button Click')
+}
+
+export default App;*/
